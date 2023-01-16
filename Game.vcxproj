@@ -148,11 +148,13 @@
     <ClInclude Include="Sauce\Framework.h" />
     <ClInclude Include="Sauce\GamePad.h" />
     <ClInclude Include="Sauce\Game\Scene.h" />
+    <ClInclude Include="Sauce\Game\Scene_Game.h" />
     <ClInclude Include="Sauce\Game\Scene_Loading.h" />
     <ClInclude Include="Sauce\Game\Scene_Manager.h" />
-    <ClInclude Include="Sauce\Game\Scene_Meta.h" />
+    <ClInclude Include="Sauce\Game\Scene_Title.h" />
     <ClInclude Include="Sauce\Graphics\Graphic.h" />
     <ClInclude Include="Sauce\Graphics\ImGuiRender.h" />
+    <ClInclude Include="Sauce\Graphics\Sprite.h" />
     <ClInclude Include="Sauce\HighResolutionTimer.h" />
     <ClInclude Include="Sauce\Input.h" />
     <ClInclude Include="Sauce\Misc.h" />
@@ -166,17 +168,20 @@
     <ClCompile Include="External\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Sauce\Framework.cpp" />
     <ClCompile Include="Sauce\GamePad.cpp" />
+    <ClCompile Include="Sauce\Game\Scene_Game.cpp" />
     <ClCompile Include="Sauce\Game\Scene_Loading.cpp" />
     <ClCompile Include="Sauce\Game\Scene_Manager.cpp" />
-    <ClCompile Include="Sauce\Game\Scene_Meta.cpp" />
+    <ClCompile Include="Sauce\Game\Scene_Title.cpp" />
     <ClCompile Include="Sauce\Graphics\Graphic.cpp" />
     <ClCompile Include="Sauce\Graphics\ImGuiRender.cpp" />
+    <ClCompile Include="Sauce\Graphics\Sprite.cpp" />
     <ClCompile Include="Sauce\Input.cpp" />
     <ClCompile Include="Sauce\Main.cpp" />
     <ClCompile Include="Sauce\Mouse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HLSL\ImGui.hlsli" />
+    <None Include="HLSL\Sprite.hlsli" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="HLSL\ImGui_PS.hlsl">
@@ -188,6 +193,18 @@
       </HeaderFileOutput>
     </FxCompile>
     <FxCompile Include="HLSL\ImGui_VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="HLSL\Sprite_PS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="HLSL\Sprite_VS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>

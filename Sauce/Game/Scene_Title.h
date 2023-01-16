@@ -1,12 +1,12 @@
 #pragma once
 #include "Scene.h"
 
-// 仮のシーン
-class SceneMeta :public Scene
+// タイトルシーン
+class SceneTitle :public Scene
 {
 public:
-    SceneMeta() {}
-    ~SceneMeta()override {}
+    SceneTitle() {}
+    ~SceneTitle()override {}
 
     // 初期化
     void Initialize() override;

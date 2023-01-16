@@ -1,6 +1,7 @@
 #pragma once
 #include <thread>
 #include "Scene.h"
+#include "Graphics/Sprite.h"
 
 // ローディングシーン
 class SceneLoading : public Scene
@@ -27,7 +28,7 @@ private:
 
 private:
 	Scene* nextScene = nullptr;
-	//Sprite* sprite = nullptr;
+	Sprite* sprite = nullptr;
 	float	angle = 0.0f;
 	std::thread* thread = nullptr;
 };

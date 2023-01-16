@@ -1,21 +1,22 @@
-#include "Scene_Meta.h"
+#include "Scene_Title.h"
+#include "Scene_Game.h"
 #include "Graphics/Graphic.h"
 #include "Scene_Manager.h"
 #include "Scene_Loading.h"
 #include "Input.h"
 
 // 初期化
-void SceneMeta::Initialize()
+void SceneTitle::Initialize()
 {
 }
 
 // 終了化
-void SceneMeta::Finalize()
+void SceneTitle::Finalize()
 {
 }
 
 // 更新処理
-void SceneMeta::Update(float elapsedTime)
+void SceneTitle::Update(float elapsedTime)
 {
     GamePad& gamePad = Input::Instance().GetGamePad();
 
@@ -37,7 +38,7 @@ void SceneMeta::Update(float elapsedTime)
 }
 
 // 描画処理
-void SceneMeta::Render()
+void SceneTitle::Render()
 {
     Graphic& graphics = Graphic::Instance();
     ID3D11DeviceContext* dc = graphics.GetDeviceContext();
@@ -62,7 +63,7 @@ void SceneMeta::Render()
 }
 
 // シーン遷移処理
-void SceneMeta::Change(float elapsedTime)
+void SceneTitle::Change(float elapsedTime)
 {
-    //SceneManager::Instance().ChangeScene(new SceneLoading(new SceneGame));
+    SceneManager::Instance().ChangeScene(new SceneLoading(new SceneGame));
 }

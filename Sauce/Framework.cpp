@@ -5,7 +5,7 @@
 #include"Graphics/Graphic.h"
 #include"Input.h"
 #include"Game/Scene_Manager.h"
-#include"Game/Scene_Meta.h"
+#include"Game/Scene_Title.h"
 
 // 垂直同期間隔設定
 static const int syncInterval = 1;
@@ -17,7 +17,7 @@ Framework::Framework(HWND hWnd):
     input(hWnd)
 {
     // シーン初期化
-    SceneManager::Instance().ChangeScene(new SceneMeta);
+    SceneManager::Instance().ChangeScene(new SceneTitle);
 }
 
 // デストラクタ

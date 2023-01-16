@@ -43,6 +43,9 @@
     <Filter Include="Sauce\Graphics\HLSL\ImGui">
       <UniqueIdentifier>{5323bbb9-5174-4c3d-8f5b-5ed802a0dce2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sauce\Graphics\HLSL\Sprite">
+      <UniqueIdentifier>{170f7ae8-3db6-4275-ab4d-13a84d982bbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\imgui\imconfig.h">
@@ -90,7 +93,7 @@
     <ClInclude Include="Sauce\Game\Scene.h">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Sauce\Game\Scene_Meta.h">
+    <ClInclude Include="Sauce\Game\Scene_Title.h">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Sauce\Game\Scene_Manager.h">
@@ -101,6 +104,12 @@
     </ClInclude>
     <ClInclude Include="Sauce\Graphics\ImGuiRender.h">
       <Filter>Sauce\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\Sprite.h">
+      <Filter>Sauce\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Scene_Game.h">
+      <Filter>Sauce\Game\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +146,7 @@
     <ClCompile Include="Sauce\Mouse.cpp">
       <Filter>Sauce\System\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Sauce\Game\Scene_Meta.cpp">
+    <ClCompile Include="Sauce\Game\Scene_Title.cpp">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Sauce\Game\Scene_Loading.cpp">
@@ -149,10 +158,19 @@
     <ClCompile Include="Sauce\Graphics\ImGuiRender.cpp">
       <Filter>Sauce\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Sauce\Graphics\Sprite.cpp">
+      <Filter>Sauce\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Scene_Game.cpp">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="HLSL\ImGui.hlsli">
       <Filter>Sauce\Graphics\HLSL\ImGui</Filter>
+    </None>
+    <None Include="HLSL\Sprite.hlsli">
+      <Filter>Sauce\Graphics\HLSL\Sprite</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +179,12 @@
     </FxCompile>
     <FxCompile Include="HLSL\ImGui_PS.hlsl">
       <Filter>Sauce\Graphics\HLSL\ImGui</Filter>
+    </FxCompile>
+    <FxCompile Include="HLSL\Sprite_VS.hlsl">
+      <Filter>Sauce\Graphics\HLSL\Sprite</Filter>
+    </FxCompile>
+    <FxCompile Include="HLSL\Sprite_PS.hlsl">
+      <Filter>Sauce\Graphics\HLSL\Sprite</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
