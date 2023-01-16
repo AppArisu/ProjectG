@@ -49,6 +49,16 @@ void SceneMeta::Render()
     dc->ClearRenderTargetView(rtv, color);
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
+
+    // ImGui
+    {
+        ImGui::Separator();
+        if (ImGui::TreeNode("UVScroll"))
+        {
+            ImGui::TreePop();
+        }
+        ImGui::Separator();
+    }
 }
 
 // ƒV[ƒ“‘JˆÚˆ—

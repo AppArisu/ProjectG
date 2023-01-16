@@ -112,6 +112,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d11.lib;dxgi.lib;winmm.lib;d2d1.lib;dwrite.lib;User32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <HeaderFileOutput>
+      </HeaderFileOutput>
+      <AssemblerOutput>AssemblyCode</AssemblerOutput>
+      <AssemblerOutputFile>Shader\%(Filename).cod</AssemblerOutputFile>
+      <ObjectFileOutput>Shader\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -144,6 +152,7 @@
     <ClInclude Include="Sauce\Game\Scene_Manager.h" />
     <ClInclude Include="Sauce\Game\Scene_Meta.h" />
     <ClInclude Include="Sauce\Graphics\Graphic.h" />
+    <ClInclude Include="Sauce\Graphics\ImGuiRender.h" />
     <ClInclude Include="Sauce\HighResolutionTimer.h" />
     <ClInclude Include="Sauce\Input.h" />
     <ClInclude Include="Sauce\Misc.h" />
@@ -161,9 +170,29 @@
     <ClCompile Include="Sauce\Game\Scene_Manager.cpp" />
     <ClCompile Include="Sauce\Game\Scene_Meta.cpp" />
     <ClCompile Include="Sauce\Graphics\Graphic.cpp" />
+    <ClCompile Include="Sauce\Graphics\ImGuiRender.cpp" />
     <ClCompile Include="Sauce\Input.cpp" />
     <ClCompile Include="Sauce\Main.cpp" />
     <ClCompile Include="Sauce\Mouse.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HLSL\ImGui.hlsli" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="HLSL\ImGui_PS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </HeaderFileOutput>
+    </FxCompile>
+    <FxCompile Include="HLSL\ImGui_VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

@@ -45,12 +45,17 @@ void Framework::Render(float elapsedTime)
     std::lock_guard<std::mutex> lock(graphic.GetMutex());
     ID3D11DeviceContext* dc = graphic.GetDeviceContext();
 
+    // IMGUIフレーム開始処理
+    graphic.GetImGuiRenderer()->NewFrame();
+
     // シーン描画処理
     SceneManager::Instance().Render();
 
+    // IMGUI描画
+    graphic.GetImGuiRenderer()->Render(dc);
+
     // バックバッファに描画した画を画面に表示する。
     graphic.GetSwapChain()->Present(syncInterval, 0);
-
 }
 
 // フレームレート計算処理
@@ -107,9 +112,9 @@ int Framework::Run()
 // メッセージハンドラー
 LRESULT Framework::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    //if (Graphics::Instance().GetImGuiRenderer()->HandleMessage(
-    //    hWnd, msg, wParam, lParam))
-    //    return true;
+    if (Graphic::Instance().GetImGuiRenderer()->HandleMessage(
+        hWnd, msg, wParam, lParam))
+        return true;
 
     switch (msg)
     {

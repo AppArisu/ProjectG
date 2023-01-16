@@ -40,6 +40,9 @@
     <Filter Include="Sauce\External\DirectXTex">
       <UniqueIdentifier>{d8015661-68c5-4acf-ae27-1be935df2317}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sauce\Graphics\HLSL\ImGui">
+      <UniqueIdentifier>{5323bbb9-5174-4c3d-8f5b-5ed802a0dce2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\imgui\imconfig.h">
@@ -96,6 +99,9 @@
     <ClInclude Include="Sauce\Game\Scene_Loading.h">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Sauce\Graphics\ImGuiRender.h">
+      <Filter>Sauce\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui\imgui.cpp">
@@ -140,5 +146,21 @@
     <ClCompile Include="Sauce\Game\Scene_Manager.cpp">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Sauce\Graphics\ImGuiRender.cpp">
+      <Filter>Sauce\Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HLSL\ImGui.hlsli">
+      <Filter>Sauce\Graphics\HLSL\ImGui</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="HLSL\ImGui_VS.hlsl">
+      <Filter>Sauce\Graphics\HLSL\ImGui</Filter>
+    </FxCompile>
+    <FxCompile Include="HLSL\ImGui_PS.hlsl">
+      <Filter>Sauce\Graphics\HLSL\ImGui</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

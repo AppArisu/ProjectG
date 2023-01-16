@@ -2,9 +2,10 @@
 #include <mutex>
 #include <memory>
 #include <d3d11.h>
-#include <DirectXMath.h>
 #include <wrl.h>
 #include <wrl/client.h>
+
+#include"ImGuiRender.h"
 
 class Graphic
 {
@@ -39,6 +40,9 @@ public:
     // スクリーン高さ取得
     float GetScreenHeight() const { return screenHeight; }
 
+    // ImGuiレンダラ取得
+    ImGuiRender* GetImGuiRenderer() const { return imguiRender.get(); }
+
 private:
     static Graphic* instance;
     std::mutex										mutex;
@@ -49,6 +53,8 @@ private:
     Microsoft::WRL::ComPtr<ID3D11RenderTargetView>	renderTargetView;
     Microsoft::WRL::ComPtr<ID3D11Texture2D>			depthStencilBuffer;
     Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	depthStencilView;
+
+    std::unique_ptr<ImGuiRender>					imguiRender;
 
     float	screenWidth;
     float	screenHeight;

@@ -139,6 +139,7 @@ Graphic::Graphic(HWND hWnd)
 
 	// ƒŒƒ“ƒ_ƒ‰
 	{
+		imguiRender = std::make_unique<ImGuiRender>(hWnd, device.Get());
 	}
 }
 
