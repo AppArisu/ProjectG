@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Sauce">
+      <UniqueIdentifier>{4493f5ae-bac4-4bcd-8dab-ca410334370b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Graphics">
+      <UniqueIdentifier>{830b92c9-0e9d-47f7-be83-6e305554800a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Game">
+      <UniqueIdentifier>{e15c4fc5-5f75-4d56-b968-eea7c1f536ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\System">
+      <UniqueIdentifier>{37f363bf-6028-4f84-baa7-3858926ee855}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\System\Input">
+      <UniqueIdentifier>{51d518ee-fa77-4c18-9f19-7aa04a494bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Game\Characters">
+      <UniqueIdentifier>{178bbdc4-02d4-4bc0-98b1-7b82db0b0ec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Game\Scenes">
+      <UniqueIdentifier>{bc2be366-d5bb-41b4-89d6-c7f6e71a5783}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Graphics\Shaders">
+      <UniqueIdentifier>{b72a38de-9f20-408f-82dc-ae735f4e83b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Graphics\Font">
+      <UniqueIdentifier>{66d3aa39-866c-45c2-9413-a497fa485584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Graphics\HLSL">
+      <UniqueIdentifier>{689d516c-a42e-48dd-802b-175ccc5c5659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\External">
+      <UniqueIdentifier>{ef335861-d62f-4de8-8004-673b2fc9743b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\External\ImGui">
+      <UniqueIdentifier>{850645de-c53a-4480-bab8-f154659b8d9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\External\DirectXTex">
+      <UniqueIdentifier>{d8015661-68c5-4acf-ae27-1be935df2317}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="External\imgui\imconfig.h">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui\imgui.h">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui\imgui_internal.h">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui\imstb_rectpack.h">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui\imstb_textedit.h">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\imgui\imstb_truetype.h">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\DirectXTex\WICTextureLoader.h">
+      <Filter>Sauce\External\DirectXTex</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Framework.h">
+      <Filter>Sauce\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\HighResolutionTimer.h">
+      <Filter>Sauce\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\Graphic.h">
+      <Filter>Sauce\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Misc.h">
+      <Filter>Sauce\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Input.h">
+      <Filter>Sauce\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Mouse.h">
+      <Filter>Sauce\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\GamePad.h">
+      <Filter>Sauce\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Scene.h">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Scene_Meta.h">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Scene_Manager.h">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Scene_Loading.h">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="External\imgui\imgui.cpp">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="External\imgui\imgui_demo.cpp">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="External\imgui\imgui_draw.cpp">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="External\imgui\imgui_widgets.cpp">
+      <Filter>Sauce\External\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="External\DirectXTex\WICTextureLoader.cpp">
+      <Filter>Sauce\External\DirectXTex</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Framework.cpp">
+      <Filter>Sauce\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Main.cpp">
+      <Filter>Sauce\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Graphics\Graphic.cpp">
+      <Filter>Sauce\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\GamePad.cpp">
+      <Filter>Sauce\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Input.cpp">
+      <Filter>Sauce\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Mouse.cpp">
+      <Filter>Sauce\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Scene_Meta.cpp">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Scene_Loading.cpp">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Scene_Manager.cpp">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
