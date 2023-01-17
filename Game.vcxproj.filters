@@ -46,6 +46,12 @@
     <Filter Include="Sauce\Graphics\HLSL\Sprite">
       <UniqueIdentifier>{170f7ae8-3db6-4275-ab4d-13a84d982bbc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sauce\Graphics\HLSL\UVScroll">
+      <UniqueIdentifier>{8a7a1ca3-5734-438f-8d96-1b48e8f42e71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Graphics\HLSL\Mask">
+      <UniqueIdentifier>{e38ff872-e554-49c4-9af4-50dec1b30eb5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\imgui\imconfig.h">
@@ -120,6 +126,27 @@
     <ClInclude Include="Sauce\Graphics\Font.h">
       <Filter>Sauce\Graphics\Font</Filter>
     </ClInclude>
+    <ClInclude Include="Sauce\Logger.h">
+      <Filter>Sauce\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\Texture.h">
+      <Filter>Sauce\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\RenderContext.h">
+      <Filter>Sauce\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\Shader_UVScroll.h">
+      <Filter>Sauce\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\Shader_Mask.h">
+      <Filter>Sauce\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\Shader.h">
+      <Filter>Sauce\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\Shader_Normal.h">
+      <Filter>Sauce\Graphics\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui\imgui.cpp">
@@ -182,6 +209,21 @@
     <ClCompile Include="Sauce\Graphics\Font.cpp">
       <Filter>Sauce\Graphics\Font</Filter>
     </ClCompile>
+    <ClCompile Include="Sauce\Logger.cpp">
+      <Filter>Sauce\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Graphics\Texture.cpp">
+      <Filter>Sauce\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Graphics\Shader_UVScroll.cpp">
+      <Filter>Sauce\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Graphics\Shader_Mask.cpp">
+      <Filter>Sauce\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Graphics\Shader_Normal.cpp">
+      <Filter>Sauce\Graphics\Shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="HLSL\ImGui.hlsli">
@@ -189,6 +231,12 @@
     </None>
     <None Include="HLSL\Sprite.hlsli">
       <Filter>Sauce\Graphics\HLSL\Sprite</Filter>
+    </None>
+    <None Include="HLSL\Mask.hlsli">
+      <Filter>Sauce\Graphics\HLSL\Mask</Filter>
+    </None>
+    <None Include="HLSL\UVScroll.hlsli">
+      <Filter>Sauce\Graphics\HLSL\UVScroll</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +251,18 @@
     </FxCompile>
     <FxCompile Include="HLSL\Sprite_PS.hlsl">
       <Filter>Sauce\Graphics\HLSL\Sprite</Filter>
+    </FxCompile>
+    <FxCompile Include="HLSL\Mask_VS.hlsl">
+      <Filter>Sauce\Graphics\HLSL\Mask</Filter>
+    </FxCompile>
+    <FxCompile Include="HLSL\Mask_PS.hlsl">
+      <Filter>Sauce\Graphics\HLSL\Mask</Filter>
+    </FxCompile>
+    <FxCompile Include="HLSL\UVScroll_PS.hlsl">
+      <Filter>Sauce\Graphics\HLSL\UVScroll</Filter>
+    </FxCompile>
+    <FxCompile Include="HLSL\UVScroll_VS.hlsl">
+      <Filter>Sauce\Graphics\HLSL\UVScroll</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

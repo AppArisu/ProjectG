@@ -5,7 +5,18 @@
 #include <wrl.h>
 #include <wrl/client.h>
 
+#include"Shader.h"
 #include"ImGuiRender.h"
+
+// スプライトシェーダータイプ
+enum class SpriteTypeID
+{
+    Default,
+    UVScroll,
+    Mask,
+
+    Max
+};
 
 class Graphic
 {
@@ -43,6 +54,9 @@ public:
     // ImGuiレンダラ取得
     ImGuiRender* GetImGuiRenderer() const { return imguiRender.get(); }
 
+    // スプライト取得
+    SpriteShader* GetSprite(const int type = 0) const { return sprite[type].get(); }
+
 private:
     static Graphic* instance;
     std::mutex										mutex;
@@ -55,6 +69,8 @@ private:
     Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	depthStencilView;
 
     std::unique_ptr<ImGuiRender>					imguiRender;
+
+    std::unique_ptr<SpriteShader>					        sprite[static_cast<int>(SpriteTypeID::Max)];
 
     float	screenWidth;
     float	screenHeight;

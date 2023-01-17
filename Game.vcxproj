@@ -170,9 +170,16 @@
     <ClInclude Include="Sauce\Graphics\Font.h" />
     <ClInclude Include="Sauce\Graphics\Graphic.h" />
     <ClInclude Include="Sauce\Graphics\ImGuiRender.h" />
+    <ClInclude Include="Sauce\Graphics\RenderContext.h" />
+    <ClInclude Include="Sauce\Graphics\Shader.h" />
+    <ClInclude Include="Sauce\Graphics\Shader_Mask.h" />
+    <ClInclude Include="Sauce\Graphics\Shader_Normal.h" />
+    <ClInclude Include="Sauce\Graphics\Shader_UVScroll.h" />
     <ClInclude Include="Sauce\Graphics\Sprite.h" />
+    <ClInclude Include="Sauce\Graphics\Texture.h" />
     <ClInclude Include="Sauce\HighResolutionTimer.h" />
     <ClInclude Include="Sauce\Input.h" />
+    <ClInclude Include="Sauce\Logger.h" />
     <ClInclude Include="Sauce\Misc.h" />
     <ClInclude Include="Sauce\Mouse.h" />
   </ItemGroup>
@@ -193,14 +200,21 @@
     <ClCompile Include="Sauce\Graphics\Font.cpp" />
     <ClCompile Include="Sauce\Graphics\Graphic.cpp" />
     <ClCompile Include="Sauce\Graphics\ImGuiRender.cpp" />
+    <ClCompile Include="Sauce\Graphics\Shader_Mask.cpp" />
+    <ClCompile Include="Sauce\Graphics\Shader_Normal.cpp" />
+    <ClCompile Include="Sauce\Graphics\Shader_UVScroll.cpp" />
     <ClCompile Include="Sauce\Graphics\Sprite.cpp" />
+    <ClCompile Include="Sauce\Graphics\Texture.cpp" />
     <ClCompile Include="Sauce\Input.cpp" />
+    <ClCompile Include="Sauce\Logger.cpp" />
     <ClCompile Include="Sauce\Main.cpp" />
     <ClCompile Include="Sauce\Mouse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HLSL\ImGui.hlsli" />
+    <None Include="HLSL\Mask.hlsli" />
     <None Include="HLSL\Sprite.hlsli" />
+    <None Include="HLSL\UVScroll.hlsli" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="HLSL\ImGui_PS.hlsl">
@@ -217,6 +231,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
+    <FxCompile Include="HLSL\Mask_PS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="HLSL\Mask_VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
     <FxCompile Include="HLSL\Sprite_PS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
@@ -224,6 +250,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
     <FxCompile Include="HLSL\Sprite_VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="HLSL\UVScroll_PS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="HLSL\UVScroll_VS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>

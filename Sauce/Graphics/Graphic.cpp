@@ -1,6 +1,10 @@
 #include "../Misc.h"
 #include "Graphic.h"
 
+#include "Shader_Normal.h"
+#include "Shader_UVScroll.h"
+#include "Shader_Mask.h"
+
 Graphic* Graphic::instance = nullptr;
 
 Graphic::Graphic(HWND hWnd)
@@ -135,6 +139,9 @@ Graphic::Graphic(HWND hWnd)
 
 	// スプライトシェーダー
 	{
+		sprite[static_cast<int>(SpriteTypeID::Default)] = std::make_unique<ShaderNormal>(device.Get());
+		sprite[static_cast<int>(SpriteTypeID::UVScroll)] = std::make_unique<ShaderUVScroll>(device.Get());
+		sprite[static_cast<int>(SpriteTypeID::Mask)] = std::make_unique<ShaderMask>(device.Get());
 	}
 
 	// レンダラ

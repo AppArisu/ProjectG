@@ -15,10 +15,19 @@ void SceneTitle::Initialize()
     data->fontWeight = DWRITE_FONT_WEIGHT_BOLD;
     // DirectWrite用コンポーネントを作成
     Write = new DirectWrite(data);
-    // フォントを変更
-    //Write->SetFont(data);
     // 初期化
     Write->Initialize();
+
+    // テクスチャ読み込み
+    texture = std::make_unique<Texture>("Data/Sprite/Title.png");
+    // マスクテクスチャ読み込み
+    maskTexture = std::make_unique<Texture>("Data/Sprite/Texture/dissolve01.png");
+    dissolveThreshold = 1.0f;
+    dissolveFlg = false;
+
+    // スプライト
+    sprite = std::make_unique<Sprite>();
+    sprite->SetShaderResourceView(texture->GetShaderResourceView(), texture->GetWidth(), texture->GetHeight());
 }
 
 // 終了化
@@ -41,11 +50,22 @@ void SceneTitle::Update(float elapsedTime)
         ;
     if (gamePad.GetButtonDown() & anyButton)
     {
+        dissolveFlg = true;
+    }
+    if (dissolveFlg)
+    {
         Change(elapsedTime);
     }
 
     // エフェクト
     {
+        // ディゾブル
+        sprite->Update(0.0f, 0.0f,
+            Graphic::Instance().GetScreenWidth(), Graphic::Instance().GetScreenHeight(),
+            0.0f, 0.0f,
+            static_cast<float>(texture->GetWidth()), static_cast<float>(texture->GetHeight()),
+            0.0f,
+            1.0f, 1.0f, 1.0f, 1.0f);
     }
 }
 
@@ -63,16 +83,54 @@ void SceneTitle::Render()
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
 
-    // ImGui
+    // スプライト
     {
+        RenderContext rc;
+        rc.deviceContext = dc;
+
+        SpriteShader* spShader = graphics.GetSprite(static_cast<int>(SpriteTypeID::Mask));
+
+        spShader->Begin(rc);
+
+        rc.uvScrollData = uvScrollData;
+        rc.maskData.maskTexture = maskTexture->GetShaderResourceView().Get();
+        rc.maskData.dissolveThreshold = dissolveThreshold;
+
+        spShader->Draw(rc, sprite.get());
+
+        spShader->End(rc);
     }
 
-    // 文字描画
-    Write->DrawString("Title", DirectX::XMFLOAT2(90, 90), D2D1_DRAW_TEXT_OPTIONS_NONE);
+    // ImGui
+    ImGuiRender();
+}
+
+void SceneTitle::ImGuiRender()
+{
+    ImGui::Begin("Parameter");
+    if (ImGui::TreeNode("UVScroll"))
+    {
+        ImGui::SliderFloat2("Scroll Value", &uvScrollData.uvScrollValue.x, -10.0f, 10.0f);
+        ImGui::TreePop();
+    }
+    if (ImGui::TreeNode("Mask"))
+    {
+        ImGui::SliderFloat("Dissolve Threshold", &dissolveThreshold, 0.0f, 1.0f);
+        ImGui::Checkbox("Dissolve Flg", &dissolveFlg);
+        ImGui::TreePop();
+    }
+    ImGui::End();
 }
 
 // シーン遷移処理
 void SceneTitle::Change(float elapsedTime)
 {
-    SceneManager::Instance().ChangeScene(new SceneLoading(new SceneGame));
+    if (dissolveThreshold > 0.0f)
+    {
+        dissolveThreshold -= elapsedTime;
+    }
+    else
+    {
+        SceneManager::Instance().ChangeScene(new SceneLoading(new SceneGame));
+    }
 }
