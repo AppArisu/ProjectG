@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <memory>
-#include "Misc.h"
-#include "Graphics/ImGuiRender.h"
+#include "../Misc.h"
+#include "ImGuiRender.h"
 
 ImGuiRender::ImGuiRender(HWND hWnd, ID3D11Device* device)
 	: hWnd(hWnd)

@@ -1,4 +1,4 @@
-#include "Misc.h"
+#include "../Misc.h"
 #include "Graphic.h"
 
 Graphic* Graphic::instance = nullptr;

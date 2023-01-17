@@ -4,7 +4,7 @@
 #include"Framework.h"
 #include"Graphics/Graphic.h"
 #include"Input.h"
-#include"Game/Scene_Manager.h"
+#include"Game/SceneManager.h"
 #include"Game/Scene_Title.h"
 
 // ‚’¼“¯ŠúŠÔŠuİ’è

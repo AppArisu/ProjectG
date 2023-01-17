@@ -96,10 +96,10 @@
     <ClInclude Include="Sauce\Game\Scene_Title.h">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Sauce\Game\Scene_Manager.h">
+    <ClInclude Include="Sauce\Game\SceneManager.h">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Sauce\Game\Scene_Loading.h">
+    <ClInclude Include="Sauce\Game\SceneLoading.h">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Sauce\Graphics\ImGuiRender.h">
@@ -110,6 +110,15 @@
     </ClInclude>
     <ClInclude Include="Sauce\Game\Scene_Game.h">
       <Filter>Sauce\Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Scene_Shop.h">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Scene_Battle.h">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Graphics\Font.h">
+      <Filter>Sauce\Graphics\Font</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,10 +158,10 @@
     <ClCompile Include="Sauce\Game\Scene_Title.cpp">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Sauce\Game\Scene_Loading.cpp">
+    <ClCompile Include="Sauce\Game\SceneLoading.cpp">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Sauce\Game\Scene_Manager.cpp">
+    <ClCompile Include="Sauce\Game\SceneManager.cpp">
       <Filter>Sauce\Game\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Sauce\Graphics\ImGuiRender.cpp">
@@ -163,6 +172,15 @@
     </ClCompile>
     <ClCompile Include="Sauce\Game\Scene_Game.cpp">
       <Filter>Sauce\Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Scene_Shop.cpp">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Scene_Battle.cpp">
+      <Filter>Sauce\Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Graphics\Font.cpp">
+      <Filter>Sauce\Graphics\Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

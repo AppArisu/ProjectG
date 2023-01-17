@@ -1,6 +1,6 @@
 #include <stdio.h> 
 #include <WICTextureLoader.h>
-#include "Misc.h"
+#include "../Misc.h"
 #include "Graphic.h"
 #include "Sprite.h"
 

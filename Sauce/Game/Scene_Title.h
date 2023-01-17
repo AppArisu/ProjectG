@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include"../Graphics/Font.h"
 
 // タイトルシーン
 class SceneTitle :public Scene
@@ -22,4 +23,8 @@ public:
 
     // シーン遷移
     void Change(float elapsedTime);
+
+private:
+    // フォント
+    DirectWrite* Write = nullptr;
 };
