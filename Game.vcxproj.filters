@@ -147,6 +147,18 @@
     <ClInclude Include="Sauce\Graphics\Shader_Normal.h">
       <Filter>Sauce\Graphics\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="Sauce\Game\Character.h">
+      <Filter>Sauce\Game\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Player.h">
+      <Filter>Sauce\Game\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Enemy.h">
+      <Filter>Sauce\Game\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\EnemyManager.h">
+      <Filter>Sauce\Game\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui\imgui.cpp">
@@ -223,6 +235,18 @@
     </ClCompile>
     <ClCompile Include="Sauce\Graphics\Shader_Normal.cpp">
       <Filter>Sauce\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Player.cpp">
+      <Filter>Sauce\Game\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Enemy.cpp">
+      <Filter>Sauce\Game\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\EnemyManager.cpp">
+      <Filter>Sauce\Game\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Character.cpp">
+      <Filter>Sauce\Game\Characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

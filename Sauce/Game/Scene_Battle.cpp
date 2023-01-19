@@ -58,12 +58,12 @@ void SceneBattle::Render()
 
     // ImGui
     {
-        ImGui::Separator();
-        if (ImGui::TreeNode("UVScroll"))
-        {
-            ImGui::TreePop();
-        }
-        ImGui::Separator();
+        //ImGui::Separator();
+        //if (ImGui::TreeNode("UVScroll"))
+        //{
+        //    ImGui::TreePop();
+        //}
+        //ImGui::Separator();
     }
 
     // •¶Žš•`‰æ

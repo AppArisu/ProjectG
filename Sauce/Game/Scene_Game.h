@@ -30,8 +30,8 @@ public:
     // •`‰æˆ—
     void Render() override;
 
-    // ‰æ‘œ•`‰æ
-    void SpriteRender();
+    // •`‰æ
+    void ImGuiRender();
 
     // •¶š•`‰æ
     void FontRender();
@@ -56,5 +56,5 @@ private:
     // ƒtƒHƒ“ƒg
     DirectWrite* Write = nullptr;
 
-    Sprite* sprite = nullptr;
+    std::unique_ptr<Sprite> sprite;
 };

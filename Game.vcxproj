@@ -160,6 +160,10 @@
     <ClInclude Include="External\imgui\imstb_truetype.h" />
     <ClInclude Include="Sauce\Framework.h" />
     <ClInclude Include="Sauce\GamePad.h" />
+    <ClInclude Include="Sauce\Game\Character.h" />
+    <ClInclude Include="Sauce\Game\Enemy.h" />
+    <ClInclude Include="Sauce\Game\EnemyManager.h" />
+    <ClInclude Include="Sauce\Game\Player.h" />
     <ClInclude Include="Sauce\Game\Scene.h" />
     <ClInclude Include="Sauce\Game\Scene_Battle.h" />
     <ClInclude Include="Sauce\Game\Scene_Game.h" />
@@ -191,6 +195,10 @@
     <ClCompile Include="External\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Sauce\Framework.cpp" />
     <ClCompile Include="Sauce\GamePad.cpp" />
+    <ClCompile Include="Sauce\Game\Character.cpp" />
+    <ClCompile Include="Sauce\Game\Enemy.cpp" />
+    <ClCompile Include="Sauce\Game\EnemyManager.cpp" />
+    <ClCompile Include="Sauce\Game\Player.cpp" />
     <ClCompile Include="Sauce\Game\Scene_Battle.cpp" />
     <ClCompile Include="Sauce\Game\Scene_Game.cpp" />
     <ClCompile Include="Sauce\Game\SceneLoading.cpp" />

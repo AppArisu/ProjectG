@@ -7,6 +7,8 @@
 #include "SceneLoading.h"
 #include "../Input.h"
 
+#include "Player.h"
+
 // 初期化
 void SceneGame::Initialize()
 {
@@ -21,6 +23,8 @@ void SceneGame::Initialize()
     //Write->SetFont(data);
     // 初期化
     Write->Initialize();
+
+    sprite = std::make_unique<Sprite>("Data/Sprite/Town.png");
 }
 
 // 終了化
@@ -66,20 +70,35 @@ void SceneGame::Render()
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
 
+    // スプライト
     {
-        ImGui::Begin("SelectNum");
-        ImGui::InputInt("NUm", &state);
-        ImGui::End();
+        float screenWidth = static_cast<float>(graphics.GetScreenWidth());
+        float screenHeight = static_cast<float>(graphics.GetScreenHeight());
+        float textureWidth = static_cast<float>(sprite->GetTextureWidth());
+        float textureHeight = static_cast<float>(sprite->GetTextureHeight());
+
+        sprite->Render(dc,0.0f, 0.0f,
+            screenWidth, screenHeight,
+            0.0f, 0.0f,
+            textureWidth, textureHeight,
+            0.0f,
+            1.0f, 1.0f, 1.0f, 1.0f);
     }
 
-    SpriteRender();
+    ImGuiRender();
 
-    FontRender();
+    //FontRender();
 }
 
 // 画像描画
-void SceneGame::SpriteRender()
+void SceneGame::ImGuiRender()
 {
+    ImGui::Begin("SelectNum");
+    ImGui::InputInt("NUm", &state);
+    ImGui::End();
+
+    Player pl = Player::Instance();
+    pl.Render(10);
 }
 
 // 文字描画
