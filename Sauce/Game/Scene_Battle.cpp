@@ -4,27 +4,25 @@
 #include "SceneManager.h"
 #include "SceneLoading.h"
 #include "../Input.h"
+#include "EnemyManager.h"
 
 // 初期化
 void SceneBattle::Initialize()
 {
-    // フォントデータを宣言
-    FontData* data = new FontData();
-    // フォントデータを改変
-    data->fontSize = 50;
-    data->fontWeight = DWRITE_FONT_WEIGHT_BOLD;
-    // DirectWrite用コンポーネントを作成
-    Write = new DirectWrite(data);
-    // フォントを変更
-    //Write->SetFont(data);
-    // 初期化
-    Write->Initialize();
+    // プレイヤー
+    player = std::make_unique<Player>();
+
+    // エネミー
+    CallEnemy(slime);
+    CallEnemy(robot);
+    CallEnemy(zombie);
+
 }
 
 // 終了化
 void SceneBattle::Finalize()
 {
-    Write->Finalize();
+    EnemyManager::Instance().Clear();
 }
 
 // 更新処理
@@ -35,10 +33,6 @@ void SceneBattle::Update(float elapsedTime)
     if (gamePad.GetButtonDown() & GamePad::BTN_A)
     {
         Change(elapsedTime);
-    }
-
-    // エフェクト
-    {
     }
 }
 
@@ -56,18 +50,38 @@ void SceneBattle::Render()
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
 
-    // ImGui
-    {
-        //ImGui::Separator();
-        //if (ImGui::TreeNode("UVScroll"))
-        //{
-        //    ImGui::TreePop();
-        //}
-        //ImGui::Separator();
-    }
+    RenderImGui();
+}
 
-    // 文字描画
-    Write->DrawString("Battle", DirectX::XMFLOAT2(90, 90), D2D1_DRAW_TEXT_OPTIONS_NONE);
+void SceneBattle::RenderImGui()
+{
+#if _DEBUG
+    player->Render(1);
+
+    slime->Render(1);
+    robot->Render(2);
+    zombie->Render(3);
+#endif
+}
+
+// エネミー呼び出し
+void SceneBattle::CallEnemy(Enemy* enemy)
+{
+    EnemyManager& enemyManager = EnemyManager::Instance();
+
+    if (enemy == slime)
+    {
+        slime = new EnemySlime;
+    }
+    if (enemy == robot)
+    {
+        robot = new EnemyRobot;
+    }
+    if (enemy == zombie)
+    {
+        zombie = new EnemyZombie;
+    }
+    enemyManager.Register(enemy);
 }
 
 // シーン遷移処理

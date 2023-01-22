@@ -1,13 +1,9 @@
 #pragma once
+#include<memory>
 #include "Scene.h"
 #include "../Graphics/Sprite.h"
-#include "../Graphics/Font.h"
 
 #include "Player.h"
-#include "Enemy.h"
-#include "Enemy_Slime.h"
-#include "Enemy_Zombie.h"
-#include "Enemy_Robot.h"
 
 enum State
 {
@@ -37,7 +33,7 @@ public:
     void Render() override;
 
     // 描画
-    void ImGuiRender();
+    void RenderImGui()override;
 
     // 文字描画
     void FontRender();
@@ -54,9 +50,6 @@ public:
     // 準備完了設定
     void SetSelect(bool setSelect) { select = setSelect; }
 
-    // エネミー呼び出し
-    void CallEnemy(Enemy* enemy);
-
 private:
     int state = State::Town;
 
@@ -64,9 +57,6 @@ private:
 
     std::unique_ptr<Sprite> sprite;
 
-    // プレイヤー、エネミー
+    // プレイヤー
     std::unique_ptr<Player> player = nullptr;
-    EnemySlime* slime = nullptr;
-    EnemyRobot* robot = nullptr;
-    EnemyZombie* zombie = nullptr;
 };

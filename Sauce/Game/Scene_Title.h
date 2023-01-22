@@ -22,11 +22,10 @@ public:
 
     // •`‰æˆ—
     void Render() override;
+    void RenderImGui() override;
 
     // ƒV[ƒ“‘JˆÚ
     void Change(float elapsedTime);
-
-    void ImGuiRender();
 
 private:
     std::unique_ptr<Sprite> sprite;

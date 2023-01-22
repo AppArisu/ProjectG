@@ -6,28 +6,20 @@
 #include "SceneManager.h"
 #include "SceneLoading.h"
 #include "../Input.h"
-#include "EnemyManager.h"
 
 // 初期化
 void SceneGame::Initialize()
 {
-    // スプライト
-    sprite = std::make_unique<Sprite>("Data/Sprite/Town.png");
-
     // プレイヤー
     player = std::make_unique<Player>();
 
-    // エネミー
-    CallEnemy(slime);
-    CallEnemy(robot);
-    CallEnemy(zombie);
-
+    // スプライト
+    sprite = std::make_unique<Sprite>("Data/Sprite/Town.png");
 }
 
 // 終了化
 void SceneGame::Finalize()
 {
-    EnemyManager::Instance().Clear();
 }
 
 // 更新処理
@@ -93,19 +85,16 @@ void SceneGame::Render()
             1.0f, 1.0f, 1.0f, 1.0f);
     }
 
-    ImGuiRender();
+    RenderImGui();
 
     //FontRender();
 }
 
-// 画像描画
-void SceneGame::ImGuiRender()
+void SceneGame::RenderImGui()
 {
+#if _DEBUG
     player->Render(1);
-
-    slime->Render(1);
-    robot->Render(2);
-    zombie->Render(3);
+#endif
 }
 
 // 文字描画
@@ -140,26 +129,6 @@ void SceneGame::StateSelect(State state01, State state02)
         }
         SetSelect(false);
     }
-}
-
-// エネミー呼び出し
-void SceneGame::CallEnemy(Enemy* enemy)
-{
-    EnemyManager& enemyManager = EnemyManager::Instance();
-
-    if (enemy == slime)
-    {
-        slime = new EnemySlime;
-    }
-    if (enemy == robot)
-    {
-        robot = new EnemyRobot;
-    }
-    if (enemy == zombie)
-    {
-        zombie = new EnemyZombie;
-    }
-    enemyManager.Register(enemy);
 }
 
 // シーン遷移処理

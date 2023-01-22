@@ -91,10 +91,10 @@ void SceneTitle::Render()
     }
 
     // ImGui
-    ImGuiRender();
+    RenderImGui();
 }
 
-void SceneTitle::ImGuiRender()
+void SceneTitle::RenderImGui()
 {
     ImGui::Begin("Parameter");
     if (ImGui::TreeNode("UVScroll"))

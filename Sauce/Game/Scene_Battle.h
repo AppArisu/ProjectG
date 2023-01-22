@@ -1,6 +1,12 @@
 #pragma once
+#include<memory>
 #include "Scene.h"
-#include "../Graphics/Font.h"
+
+#include "Player.h"
+#include "Enemy.h"
+#include "Enemy_Slime.h"
+#include "Enemy_Zombie.h"
+#include "Enemy_Robot.h"
 
 // 戦闘シーン
 class SceneBattle :public Scene
@@ -20,11 +26,20 @@ public:
 
     // 描画処理
     void Render() override;
+    void RenderImGui() override;
 
     // シーン遷移
     void Change(float elapsedTime);
 
+    // エネミー呼び出し
+    void CallEnemy(Enemy* enemy);
+
 private:
-    // フォント
-    DirectWrite* Write = nullptr;
+    // プレイヤー
+    std::unique_ptr<Player> player = nullptr;
+    // エネミー
+    EnemySlime* slime = nullptr;
+    EnemyRobot* robot = nullptr;
+    EnemyZombie* zombie = nullptr;
+
 };

@@ -1,6 +1,5 @@
 #pragma once
 #include "Scene.h"
-#include "../Graphics/Font.h"
 #include "Shop_Weapon.h"
 #include "Shop_Armor.h"
 #include  "Shop_Recovery.h"
@@ -25,13 +24,12 @@ public:
     // 描画処理
     void Render() override;
 
+    void RenderImGui() override;
+
     // シーン遷移
     void Change(float elapsedTime);
 
 private:
-    // フォント
-    DirectWrite* Write = nullptr;
-
     // ショップ
     std::unique_ptr<ShopWeapon> weapon = nullptr;
     std::unique_ptr<ShopArmor> armor = nullptr;

@@ -18,6 +18,7 @@ public:
 
 	// •`‰æˆ—
 	virtual void Render() = 0;
+	virtual void RenderImGui() {};
 
 	// €”õŠ®—¹‚µ‚Ä‚¢‚é‚©
 	bool IsReady() const { return ready; }

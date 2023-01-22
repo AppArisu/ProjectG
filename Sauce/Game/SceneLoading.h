@@ -21,6 +21,7 @@ public:
 
 	// 描画処理
 	void Render() override;
+	void RenderImGui() override {}
 
 private:
 	// ローディングスレッド

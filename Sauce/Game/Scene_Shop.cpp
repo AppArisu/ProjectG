@@ -8,16 +8,6 @@
 // 初期化
 void SceneShop::Initialize()
 {
-    // フォントデータを宣言
-    FontData* data = new FontData();
-    // フォントデータを改変
-    data->fontSize = 50;
-    data->fontWeight = DWRITE_FONT_WEIGHT_BOLD;
-    // DirectWrite用コンポーネントを作成
-    Write = new DirectWrite(data);
-    // 初期化
-    Write->Initialize();
-
     // ショップ
     weapon = std::make_unique<ShopWeapon>();
     armor = std::make_unique<ShopArmor>();
@@ -28,7 +18,6 @@ void SceneShop::Initialize()
 // 終了化
 void SceneShop::Finalize()
 {
-    Write->Finalize();
 }
 
 // 更新処理
@@ -60,16 +49,17 @@ void SceneShop::Render()
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
 
-    // ImGui
-    {
-        weapon->Render();
-        armor->Render();
-        recovery->Render();
-        tool->Render();
-    }
+    RenderImGui();
+}
 
-    // 文字描画
-    Write->DrawString("Shop", DirectX::XMFLOAT2(90, 90), D2D1_DRAW_TEXT_OPTIONS_NONE);
+void SceneShop::RenderImGui()
+{
+#if _DEBUG
+    weapon->Render();
+    armor->Render();
+    recovery->Render();
+    tool->Render();
+#endif
 }
 
 // シーン遷移処理
