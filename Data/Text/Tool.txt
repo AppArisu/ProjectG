@@ -1,0 +1,2 @@
+ID(int) Type(char) Name(char) Price(int) Comment(char)
+0 Tool Î 0 ŒÅ‚¢ÎBg—p‚·‚é‚Æ“Š‚°‚ÄUŒ‚‚·‚é

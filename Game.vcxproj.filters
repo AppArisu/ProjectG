@@ -52,6 +52,18 @@
     <Filter Include="Sauce\Graphics\HLSL\Mask">
       <UniqueIdentifier>{e38ff872-e554-49c4-9af4-50dec1b30eb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sauce\Game\Characters\Player">
+      <UniqueIdentifier>{64801826-4e1a-44af-a036-af5a31810ee3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Game\Characters\Enemy">
+      <UniqueIdentifier>{5a6ad8c2-3bb3-4118-aaac-5a6369e0dd1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Game\Shop">
+      <UniqueIdentifier>{1e805f01-26e6-420c-802a-0fc545a11e43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sauce\Game\Item">
+      <UniqueIdentifier>{ef431ece-fc7b-4e79-b8d8-8f5c317b7677}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\imgui\imconfig.h">
@@ -151,13 +163,55 @@
       <Filter>Sauce\Game\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Sauce\Game\Player.h">
-      <Filter>Sauce\Game\Characters</Filter>
+      <Filter>Sauce\Game\Characters\Player</Filter>
     </ClInclude>
     <ClInclude Include="Sauce\Game\Enemy.h">
-      <Filter>Sauce\Game\Characters</Filter>
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Sauce\Game\EnemyManager.h">
-      <Filter>Sauce\Game\Characters</Filter>
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Enemy_Slime.h">
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Enemy_Robot.h">
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Enemy_Zombie.h">
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Battle.h">
+      <Filter>Sauce\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Shop.h">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Shop_Armor.h">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Shop_Weapon.h">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Shop_Tool.h">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Shop_Recovery.h">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Item.h">
+      <Filter>Sauce\Game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Item_Armor.h">
+      <Filter>Sauce\Game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Item_Weapon.h">
+      <Filter>Sauce\Game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\Item_Recovery.h">
+      <Filter>Sauce\Game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\item_Tool.h">
+      <Filter>Sauce\Game\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,17 +290,44 @@
     <ClCompile Include="Sauce\Graphics\Shader_Normal.cpp">
       <Filter>Sauce\Graphics\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="Sauce\Game\Player.cpp">
-      <Filter>Sauce\Game\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="Sauce\Game\Enemy.cpp">
-      <Filter>Sauce\Game\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="Sauce\Game\EnemyManager.cpp">
-      <Filter>Sauce\Game\Characters</Filter>
-    </ClCompile>
     <ClCompile Include="Sauce\Game\Character.cpp">
       <Filter>Sauce\Game\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Player.cpp">
+      <Filter>Sauce\Game\Characters\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Enemy.cpp">
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\EnemyManager.cpp">
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Enemy_Slime.cpp">
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Enemy_Robot.cpp">
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Enemy_Zombie.cpp">
+      <Filter>Sauce\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Battle.cpp">
+      <Filter>Sauce\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Shop_Armor.cpp">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Shop_Recovery.cpp">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Shop_Tool.cpp">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Shop_Weapon.cpp">
+      <Filter>Sauce\Game\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\Item.cpp">
+      <Filter>Sauce\Game\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

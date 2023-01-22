@@ -3,6 +3,12 @@
 #include "../Graphics/Sprite.h"
 #include "../Graphics/Font.h"
 
+#include "Player.h"
+#include "Enemy.h"
+#include "Enemy_Slime.h"
+#include "Enemy_Zombie.h"
+#include "Enemy_Robot.h"
+
 enum State
 {
     Town,
@@ -48,13 +54,19 @@ public:
     // 準備完了設定
     void SetSelect(bool setSelect) { select = setSelect; }
 
+    // エネミー呼び出し
+    void CallEnemy(Enemy* enemy);
+
 private:
     int state = State::Town;
 
     bool select = false;
 
-    // フォント
-    DirectWrite* Write = nullptr;
-
     std::unique_ptr<Sprite> sprite;
+
+    // プレイヤー、エネミー
+    std::unique_ptr<Player> player = nullptr;
+    EnemySlime* slime = nullptr;
+    EnemyRobot* robot = nullptr;
+    EnemyZombie* zombie = nullptr;
 };

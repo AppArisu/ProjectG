@@ -1,0 +1,4 @@
+ID(int) Type(char) Name(char) Price(int) Comment(char)
+0 Weapon –Ø“ 50 ‚»‚±‚ç•Ó‚Ì–Ø‚ğí‚è‚¾‚µ‚Äì‚ç‚ê‚½B­XÜ‚ê‚â‚·‚¢
+1 Weapon Î‚ÌŒ• 150 ‚¿è‚ª‚²‚Â‚²‚Â‚µ‚Ä‚¢‚Ä‚¿‚Ã‚ç‚¢
+2 Weapon “S‚ÌŒ• 450 ŒÅ‚­‰s‚­A‚»‚µ‚ÄK‚Ñ‚â‚·‚¢

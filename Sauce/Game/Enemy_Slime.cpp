@@ -49,8 +49,8 @@ void EnemySlime::Render(float elapsedTime)
 // ImGui
 void EnemySlime::RenderImGui()
 {
-    ImGui::Begin("Slime");
-    if (ImGui::TreeNode("Parameter"))
+    ImGui::Begin("Enemy");
+    if (ImGui::TreeNode("Slime"))
     {
         int pram[] =
         {

@@ -49,8 +49,8 @@ void EnemyRobot::Render(float elapsedTime)
 // ImGui
 void EnemyRobot::RenderImGui()
 {
-    ImGui::Begin("Robot");
-    if (ImGui::TreeNode("Parameter"))
+    ImGui::Begin("Enemy");
+    if (ImGui::TreeNode("Robot"))
     {
         int pram[] =
         {

@@ -8,16 +8,6 @@
 // 初期化
 void SceneTitle::Initialize()
 {
-    // フォントデータを宣言
-    FontData* data = new FontData();
-    // フォントデータを改変
-    data->fontSize = 50;
-    data->fontWeight = DWRITE_FONT_WEIGHT_BOLD;
-    // DirectWrite用コンポーネントを作成
-    Write = new DirectWrite(data);
-    // 初期化
-    Write->Initialize();
-
     // テクスチャ読み込み
     texture = std::make_unique<Texture>("Data/Sprite/Title.png");
     // マスクテクスチャ読み込み
@@ -33,7 +23,6 @@ void SceneTitle::Initialize()
 // 終了化
 void SceneTitle::Finalize()
 {
-    Write->Finalize();
 }
 
 // 更新処理

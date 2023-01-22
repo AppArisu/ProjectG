@@ -29,9 +29,6 @@ public:
     void ImGuiRender();
 
 private:
-    // ƒtƒHƒ“ƒg
-    DirectWrite* Write = nullptr;
-
     std::unique_ptr<Sprite> sprite;
     std::unique_ptr<Texture> texture;
 

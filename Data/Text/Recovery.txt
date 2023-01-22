@@ -1,0 +1,5 @@
+ID(int) Type(char) Name(char) Price(int) Comment(char)
+0 Recovery 薬草 10 とても苦い草。使うと10回復する。
+1 Recovery 毒消し草 10 どくどくしい色をした草。使うと半分の確立で毒が治る。
+2 Recovery 回復薬 50 とても苦い薬。使うと50回復する。
+3 Recovery 毒消し薬 50 どくどくしい色をした薬。使うと毒が治る。

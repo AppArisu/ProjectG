@@ -15,10 +15,14 @@ void SceneShop::Initialize()
     data->fontWeight = DWRITE_FONT_WEIGHT_BOLD;
     // DirectWrite用コンポーネントを作成
     Write = new DirectWrite(data);
-    // フォントを変更
-    //Write->SetFont(data);
     // 初期化
     Write->Initialize();
+
+    // ショップ
+    weapon = std::make_unique<ShopWeapon>();
+    armor = std::make_unique<ShopArmor>();
+    recovery = std::make_unique<ShopRecovery>();
+    tool = std::make_unique<ShopTool>();
 }
 
 // 終了化
@@ -58,6 +62,10 @@ void SceneShop::Render()
 
     // ImGui
     {
+        weapon->Render();
+        armor->Render();
+        recovery->Render();
+        tool->Render();
     }
 
     // 文字描画

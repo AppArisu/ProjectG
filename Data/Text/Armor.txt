@@ -1,0 +1,5 @@
+ID(int) Type(char) Name(char) Price(int) Comment(char)
+0 Armor ”ç‚Ì–XŽq 50 ‚æ‚­‚í‚©‚ç‚È‚¢”ç‚Åì‚ç‚ê‚½–XŽq
+1 Armor ”ç‚ÌŠZ 150 ‚æ‚­‚í‚©‚ç‚È‚¢”ç‚Åì‚ç‚ê‚½ŠZ
+2 Armor “S‚ÌŠ• 200 ‚Æ‚Ä‚àd‚½‚¢“S‚Åì‚ç‚ê‚½Š•
+3 Armor “S‚ÌŠZ 450 ‚Æ‚Ä‚àd‚½‚¢“S‚Åì‚ç‚ê‚½ŠZ
