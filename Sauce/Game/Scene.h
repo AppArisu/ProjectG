@@ -1,5 +1,12 @@
 #pragma once
 
+enum GameState
+{
+	Play,
+	Paused,
+	Quit
+};
+
 // シーン
 class Scene
 {
@@ -15,6 +22,7 @@ public:
 
 	// 更新処理
 	virtual void Update(float elapsedTime) = 0;
+	virtual void ProcessInput() = 0;
 
 	// 描画処理
 	virtual void Render() = 0;
@@ -26,6 +34,12 @@ public:
 	// 準備完了設定
 	void SetReady() { ready = true; }
 
+public:
+	auto GetState() const { return this->gState; }
+	void SetState(auto state) { gState = state; }
+
 private:
 	bool	ready = false;
+
+	GameState gState = GameState::Play;
 };

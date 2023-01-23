@@ -25,35 +25,60 @@ void SceneGame::Finalize()
 // 更新処理
 void SceneGame::Update(float elapsedTime)
 {
+    ProcessInput();
+
+    if (GetState() == GameState::Play)
+    {
+
+        switch (state)
+        {
+        case State::Town:
+            break;
+        case State::Shop:
+            Change(elapsedTime, new SceneShop);
+            break;
+        case State::Battle:
+            Change(elapsedTime, new SceneBattle);
+            break;
+        case State::End:
+            break;
+        }
+
+        StateSelect(Town, End);
+
+        if (SceneChangeflg)
+        {
+            state = State::Shop;
+        }
+    }
+}
+
+void SceneGame::ProcessInput()
+{
     GamePad& gamePad = Input::Instance().GetGamePad();
 
-    switch (state)
+    if (GetState() == Play)
     {
-    case State::Town:
-        break;
-    case State::Shop:
-        Change(elapsedTime, new SceneShop);
-        break;
-    case State::Battle:
-        Change(elapsedTime, new SceneBattle);
-        break;
-    case State::Quit:
-        break;
+        if (gamePad.GetButtonDown() & GamePad::BTN_A ||
+            GetKeyState(VK_RETURN) & 0x8000)
+        {
+            SceneChangeflg = true;
+        }
+        if (GetKeyState(VK_TAB) & 0x8000)
+        {
+            // ポーズに移行
+            SetState(Paused);
+        }
     }
 
-    const GamePadButton anyButton =
-        GamePad::BTN_A
-        | GamePad::BTN_B
-        | GamePad::BTN_X
-        | GamePad::BTN_Y
-        ;
-    if (gamePad.GetButtonDown() & anyButton)
+    if (GetState() == Paused)
     {
-        state = State::Shop;
+        if (GetKeyState(VK_BACK) & 0x8000)
+        {
+            // プレイに移行
+            SetState(Play);
+        }
     }
-
-    StateSelect(Town, Quit);
-    
 }
 
 // 描画処理
@@ -85,7 +110,10 @@ void SceneGame::Render()
             1.0f, 1.0f, 1.0f, 1.0f);
     }
 
-    RenderImGui();
+    if (GetState() == Play)
+    {
+        RenderImGui();
+    }
 
     //FontRender();
 }

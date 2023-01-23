@@ -10,7 +10,7 @@ enum State
     Town,
     Shop,
     Battle,
-    Quit
+    End
 };
 
 // タイトルシーン
@@ -28,6 +28,7 @@ public:
 
     // 更新処理
     void Update(float elapsedTime) override;
+    void ProcessInput() override;
 
     // 描画処理
     void Render() override;
@@ -54,6 +55,7 @@ private:
     int state = State::Town;
 
     bool select = false;
+    bool SceneChangeflg = false;
 
     std::unique_ptr<Sprite> sprite;
 

@@ -28,11 +28,44 @@ void SceneBattle::Finalize()
 // 更新処理
 void SceneBattle::Update(float elapsedTime)
 {
+    ProcessInput();
+
+    if (GetState() == GameState::Play)
+    {
+
+        if (SceneChangeflg)
+        {
+            Change(elapsedTime);
+        }
+    }
+}
+
+// キー管理
+void SceneBattle::ProcessInput()
+{
     GamePad& gamePad = Input::Instance().GetGamePad();
 
-    if (gamePad.GetButtonDown() & GamePad::BTN_A)
+    if (GetState() == Play)
     {
-        Change(elapsedTime);
+        if (gamePad.GetButtonDown() & GamePad::BTN_A ||
+            GetKeyState(VK_RETURN) & 0x8000)
+        {
+            SceneChangeflg = true;
+        }
+        if (GetKeyState(VK_TAB) & 0x8000)
+        {
+            // ポーズに移行
+            SetState(Paused);
+        }
+    }
+
+    if (GetState() == Paused)
+    {
+        if (GetKeyState(VK_BACK) & 0x8000)
+        {
+            // プレイに移行
+            SetState(Play);
+        }
     }
 }
 
@@ -50,7 +83,17 @@ void SceneBattle::Render()
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
 
-    RenderImGui();
+    if (GetState() == Play)
+    {
+        RenderImGui();
+    }
+
+    ImGui::Begin("GameState");
+    {
+        int i = GetState();
+        ImGui::InputInt("State", &i);
+    }
+    ImGui::End();
 }
 
 void SceneBattle::RenderImGui()

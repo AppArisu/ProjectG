@@ -23,6 +23,7 @@ public:
 
     // XVˆ—
     void Update(float elapsedTime) override;
+    void ProcessInput() override;
 
     // •`‰æˆ—
     void Render() override;
@@ -42,4 +43,5 @@ private:
     EnemyRobot* robot = nullptr;
     EnemyZombie* zombie = nullptr;
 
+    bool SceneChangeflg = false;
 };

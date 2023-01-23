@@ -23,15 +23,42 @@ void SceneShop::Finalize()
 // 更新処理
 void SceneShop::Update(float elapsedTime)
 {
+    ProcessInput();
+
+    if (GetState() == GameState::Play)
+    {
+        if (SceneChangeflg)
+        {
+            Change(elapsedTime);
+        }
+    }
+}
+
+void SceneShop::ProcessInput()
+{
     GamePad& gamePad = Input::Instance().GetGamePad();
 
-    if (gamePad.GetButtonDown() & GamePad::BTN_A)
+    if (GetState() == Play)
     {
-        Change(elapsedTime);
+        if (gamePad.GetButtonDown() & GamePad::BTN_A ||
+            GetKeyState(VK_RETURN) & 0x8000)
+        {
+            SceneChangeflg = true;
+        }
+        if (GetKeyState(VK_TAB) & 0x8000)
+        {
+            // ポーズに移行
+            SetState(Paused);
+        }
     }
 
-    // エフェクト
+    if (GetState() == Paused)
     {
+        if (GetKeyState(VK_BACK) & 0x8000)
+        {
+            // プレイに移行
+            SetState(Play);
+        }
     }
 }
 
@@ -49,7 +76,10 @@ void SceneShop::Render()
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
 
-    RenderImGui();
+    if (GetState() == Play)
+    {
+        RenderImGui();
+    }
 }
 
 void SceneShop::RenderImGui()

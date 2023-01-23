@@ -28,20 +28,9 @@ void SceneTitle::Finalize()
 // 更新処理
 void SceneTitle::Update(float elapsedTime)
 {
-    GamePad& gamePad = Input::Instance().GetGamePad();
+    ProcessInput();
 
-    // なにかボタンを押したらローディングシーンへ切り替え
-    const GamePadButton anyButton =
-        GamePad::BTN_A
-        | GamePad::BTN_B
-        | GamePad::BTN_X
-        | GamePad::BTN_Y
-        ;
-    if (gamePad.GetButtonDown() & anyButton)
-    {
-        dissolveFlg = true;
-    }
-    if (dissolveFlg)
+    if (SceneChangeflg)
     {
         Change(elapsedTime);
     }
@@ -55,6 +44,23 @@ void SceneTitle::Update(float elapsedTime)
             static_cast<float>(texture->GetWidth()), static_cast<float>(texture->GetHeight()),
             0.0f,
             1.0f, 1.0f, 1.0f, 1.0f);
+    }
+}
+
+void SceneTitle::ProcessInput()
+{
+    GamePad& gamePad = Input::Instance().GetGamePad();
+
+    const GamePadButton anyButton =
+        GamePad::BTN_A
+        | GamePad::BTN_B
+        | GamePad::BTN_X
+        | GamePad::BTN_Y
+        ;
+
+    if (gamePad.GetButtonDown() & anyButton)
+    {
+        SceneChangeflg = true;
     }
 }
 

@@ -19,6 +19,7 @@ public:
 
     // XVˆ—
     void Update(float elapsedTime) override;
+    void ProcessInput() override;
 
     // •`‰æˆ—
     void Render() override;
@@ -38,5 +39,7 @@ private:
     std::unique_ptr<Texture> maskTexture;
     float dissolveThreshold = 0.0f;
     bool dissolveFlg = false;
+
+    bool SceneChangeflg = 0;
 
 };

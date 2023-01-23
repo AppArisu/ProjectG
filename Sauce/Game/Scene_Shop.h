@@ -20,6 +20,7 @@ public:
 
     // XVˆ—
     void Update(float elapsedTime) override;
+    void ProcessInput() override;
 
     // •`‰æˆ—
     void Render() override;
@@ -35,5 +36,7 @@ private:
     std::unique_ptr<ShopArmor> armor = nullptr;
     std::unique_ptr<ShopRecovery> recovery = nullptr;
     std::unique_ptr<ShopTool> tool = nullptr;
+
+    bool SceneChangeflg = false;
 
 };
