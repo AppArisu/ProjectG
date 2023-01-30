@@ -20,24 +20,29 @@ public:
     void Render() override;
     void RenderImGui() override;
 
-    void Shop_Talk() override;
-    void Shop_Buy() override;
-    void Shop_Sell() override;
+private:
+    // Ç»Çµ
+    void TransitionNoneState() override;
+    void UpdateNoneState(float elapsedTime) override;
 
-protected:
-    enum State
-    {
-        None,
-        Talk,
-        Buy,
-        Sell,
-        End
-    };
+    // òbÇ∑
+    void TransitionTalkState() override;
+    void UpdateTalkState(float elapsedTime) override;
+
+    // îÉÇ§
+    void TransitionBuyState() override;
+    void UpdateBuyState(float elapsedTime) override;
+
+    // îÑÇÈ
+    void TransitionSellState() override;
+    void UpdateSellState(float elapsedTime) override;
+
+    // èIÇÌÇÈ
+    void TransitionEndState() override;
+    void UpdateEndState(float elapsedTime) override;
 
 private:
     std::unique_ptr<Item> items = nullptr;
-
-    State state = State::None;
 
     int select = 0;
 };

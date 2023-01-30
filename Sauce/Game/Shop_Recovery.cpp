@@ -5,6 +5,8 @@
 // コンストラクタ
 ShopRecovery::ShopRecovery()
 {
+    TransitionNoneState();
+
     items = std::make_unique<Item>("Data/Text/Recovery.txt");
 }
 
@@ -13,15 +15,20 @@ void ShopRecovery::Update()
 {
     switch (state)
     {
-    case ShopRecovery::None:
+    case Shop::None: // なし
+        UpdateNoneState(1);
         break;
-    case ShopRecovery::Talk:
+    case Shop::Talk: // 話す
+        UpdateNoneState(1);
         break;
-    case ShopRecovery::Buy:
+    case Shop::Buy: // 買う
+        UpdateNoneState(1);
         break;
-    case ShopRecovery::Sell:
+    case Shop::Sell: // 売る
+        UpdateNoneState(1);
         break;
-    case ShopRecovery::End:
+    case Shop::End: // 終わり
+        UpdateNoneState(1);
         break;
     }
 }
@@ -47,17 +54,47 @@ void ShopRecovery::RenderImGui()
     ImGui::End();
 }
 
+// なし
+void ShopRecovery::TransitionNoneState()
+{
+    state = State::None;
+}
+void ShopRecovery::UpdateNoneState(float elapsedTime)
+{
+}
+
 // 話す
-void ShopRecovery::Shop_Talk()
+void ShopRecovery::TransitionTalkState()
+{
+    state = State::Talk;
+}
+void ShopRecovery::UpdateTalkState(float elapsedTime)
 {
 }
 
 // 買う
-void ShopRecovery::Shop_Buy()
+void ShopRecovery::TransitionBuyState()
+{
+    state = State::Buy;
+}
+void ShopRecovery::UpdateBuyState(float elapsedTime)
 {
 }
 
 // 売る
-void ShopRecovery::Shop_Sell()
+void ShopRecovery::TransitionSellState()
+{
+    state = State::Sell;
+}
+void ShopRecovery::UpdateSellState(float elapsedTime)
+{
+}
+
+// 終わり
+void ShopRecovery::TransitionEndState()
+{
+    state = State::End;
+}
+void ShopRecovery::UpdateEndState(float elapsedTime)
 {
 }

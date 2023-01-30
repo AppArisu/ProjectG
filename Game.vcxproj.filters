@@ -64,6 +64,9 @@
     <Filter Include="Sauce\Game\Item">
       <UniqueIdentifier>{ef431ece-fc7b-4e79-b8d8-8f5c317b7677}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sauce\Game\UI">
+      <UniqueIdentifier>{6dae974f-77c7-4073-b4ca-c92a1b1c149e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\imgui\imconfig.h">
@@ -213,6 +216,18 @@
     <ClInclude Include="Sauce\Game\item_Tool.h">
       <Filter>Sauce\Game\Item</Filter>
     </ClInclude>
+    <ClInclude Include="Sauce\Game\UI_Screen.h">
+      <Filter>Sauce\Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\UI_Paused.h">
+      <Filter>Sauce\Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\UI_Quit.h">
+      <Filter>Sauce\Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sauce\Game\UI_Battle.h">
+      <Filter>Sauce\Game\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="External\imgui\imgui.cpp">
@@ -328,6 +343,18 @@
     </ClCompile>
     <ClCompile Include="Sauce\Game\Item.cpp">
       <Filter>Sauce\Game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\UI_Paused.cpp">
+      <Filter>Sauce\Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\UI_Quit.cpp">
+      <Filter>Sauce\Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\UI_Battle.cpp">
+      <Filter>Sauce\Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauce\Game\UI_Screen.cpp">
+      <Filter>Sauce\Game\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

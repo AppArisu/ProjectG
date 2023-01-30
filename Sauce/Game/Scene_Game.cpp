@@ -27,7 +27,7 @@ void SceneGame::Update(float elapsedTime)
 {
     ProcessInput();
 
-    if (GetState() == GameState::Play)
+    if (GetGameState() == GameState::Play)
     {
 
         switch (state)
@@ -57,7 +57,7 @@ void SceneGame::ProcessInput()
 {
     GamePad& gamePad = Input::Instance().GetGamePad();
 
-    if (GetState() == Play)
+    if (GetGameState() == Play)
     {
         if (gamePad.GetButtonDown() & GamePad::BTN_A ||
             GetKeyState(VK_RETURN) & 0x8000)
@@ -67,16 +67,16 @@ void SceneGame::ProcessInput()
         if (GetKeyState(VK_TAB) & 0x8000)
         {
             // ポーズに移行
-            SetState(Paused);
+            paused = std::make_unique<UIPaused>(this);
         }
     }
 
-    if (GetState() == Paused)
+    if (GetGameState() == Paused)
     {
         if (GetKeyState(VK_BACK) & 0x8000)
         {
             // プレイに移行
-            SetState(Play);
+            paused->Update();
         }
     }
 }
@@ -110,12 +110,11 @@ void SceneGame::Render()
             1.0f, 1.0f, 1.0f, 1.0f);
     }
 
-    if (GetState() == Play)
+    if (GetGameState() == Paused)
     {
+        paused->Render();
         RenderImGui();
     }
-
-    //FontRender();
 }
 
 void SceneGame::RenderImGui()

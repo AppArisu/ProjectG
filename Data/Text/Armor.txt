@@ -1,5 +1,5 @@
 ID(int) Type(char) Name(char) Price(int) Comment(char)
-0 Armor ��̖X�q 50 �悭�킩��Ȃ���ō��ꂽ�X�q
-1 Armor ��̊Z 150 �悭�킩��Ȃ���ō��ꂽ�Z
-2 Armor �S�̊� 200 �ƂĂ��d�����S�ō��ꂽ��
-3 Armor �S�̊Z 450 �ƂĂ��d�����S�ō��ꂽ�Z
+0 Armor かわのぼうし 50 よくわからないかわでつくられたぼうし
+1 Armor かわのよろい 150 よくわからないかわでつくられたよろい
+2 Armor てつのかぶと 200 とてもおもたいてつでつくられたかぶと
+3 Armor てつのよろい 450 とてもおもたいてつでつくられたよろい

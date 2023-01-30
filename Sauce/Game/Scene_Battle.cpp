@@ -16,7 +16,6 @@ void SceneBattle::Initialize()
     CallEnemy(slime);
     CallEnemy(robot);
     CallEnemy(zombie);
-
 }
 
 // 終了化
@@ -30,7 +29,7 @@ void SceneBattle::Update(float elapsedTime)
 {
     ProcessInput();
 
-    if (GetState() == GameState::Play)
+    if (GetGameState() == GameState::Play)
     {
 
         if (SceneChangeflg)
@@ -45,27 +44,23 @@ void SceneBattle::ProcessInput()
 {
     GamePad& gamePad = Input::Instance().GetGamePad();
 
-    if (GetState() == Play)
+    if (GetGameState() == Play)
     {
         if (gamePad.GetButtonDown() & GamePad::BTN_A ||
-            GetKeyState(VK_RETURN) & 0x8000)
+            GetKeyState(VK_RETURN) & 0x800)
         {
             SceneChangeflg = true;
         }
-        if (GetKeyState(VK_TAB) & 0x8000)
+        if (GetKeyState(VK_TAB) & 0x800)
         {
             // ポーズに移行
-            SetState(Paused);
+            paused = std::make_unique<UIPaused>(this);
         }
     }
 
-    if (GetState() == Paused)
+    if (GetGameState() == Paused)
     {
-        if (GetKeyState(VK_BACK) & 0x8000)
-        {
-            // プレイに移行
-            SetState(Play);
-        }
+        paused->Update();
     }
 }
 
@@ -83,17 +78,11 @@ void SceneBattle::Render()
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
 
-    if (GetState() == Play)
+    if (GetGameState() == Paused)
     {
+        paused->Render();
         RenderImGui();
     }
-
-    ImGui::Begin("GameState");
-    {
-        int i = GetState();
-        ImGui::InputInt("State", &i);
-    }
-    ImGui::End();
 }
 
 void SceneBattle::RenderImGui()

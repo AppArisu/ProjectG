@@ -1,4 +1,4 @@
 ID(int) Type(char) Name(char) Price(int) Comment(char)
-0 Weapon �ؓ� 50 ������ӂ̖؂���肾���č��ꂽ�B���X�܂�₷��
-1 Weapon �΂̌� 150 �����肪�������Ă��Ď����Â炢
-2 Weapon �S�̌� 450 �ł��s���A�����ĎK�т₷��
+0 Weapon きのけん 50 きをけずってつくられたけん。しょうしょうおれやすい
+1 Weapon いしのけん 150 もちてがごつごつしていてもちづらいけん
+2 Weapon てつのけん 450 かたくするどく、そしてさびやすいけん

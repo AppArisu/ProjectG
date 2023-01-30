@@ -1,2 +1,2 @@
 ID(int) Type(char) Name(char) Price(int) Comment(char)
-0 Tool �� 0 �ł��΁B�g�p����Ɠ����čU������
+0 Tool いし 0 かたいいし。しようするとてきにむかってなげる

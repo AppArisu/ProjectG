@@ -1,4 +1,5 @@
 #pragma once
+#include<vector>
 
 enum GameState
 {
@@ -34,9 +35,8 @@ public:
 	// €”õŠ®—¹Ý’è
 	void SetReady() { ready = true; }
 
-public:
-	auto GetState() const { return this->gState; }
-	void SetState(auto state) { gState = state; }
+	auto GetGameState() const { return this->gState; }
+	void SetGameState(auto state) { gState = state; }
 
 private:
 	bool	ready = false;

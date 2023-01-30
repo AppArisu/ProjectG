@@ -7,6 +7,7 @@
 #include "Enemy_Slime.h"
 #include "Enemy_Zombie.h"
 #include "Enemy_Robot.h"
+#include "UI_Paused.h"
 
 // êÌì¨ÉVÅ[Éì
 class SceneBattle :public Scene
@@ -42,6 +43,8 @@ private:
     EnemySlime* slime = nullptr;
     EnemyRobot* robot = nullptr;
     EnemyZombie* zombie = nullptr;
+    // UI
+    std::unique_ptr<UIPaused> paused = nullptr;
 
     bool SceneChangeflg = false;
 };

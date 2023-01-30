@@ -5,6 +5,8 @@
 // コンストラクタ
 ShopArmor::ShopArmor()
 {
+    TransitionNoneState();
+
     items = std::make_unique<Item>("Data/Text/Armor.txt");
 }
 
@@ -13,15 +15,20 @@ void ShopArmor::Update()
 {
     switch (state)
     {
-    case ShopArmor::None:
+    case Shop::None: // なし
+        UpdateNoneState(1);
         break;
-    case ShopArmor::Talk:
+    case Shop::Talk: // 話す
+        UpdateNoneState(1);
         break;
-    case ShopArmor::Buy:
+    case Shop::Buy: // 買う
+        UpdateNoneState(1);
         break;
-    case ShopArmor::Sell:
+    case Shop::Sell: // 売る
+        UpdateNoneState(1);
         break;
-    case ShopArmor::End:
+    case Shop::End: // 終わり
+        UpdateNoneState(1);
         break;
     }
 }
@@ -47,17 +54,47 @@ void ShopArmor::RenderImGui()
     ImGui::End();
 }
 
+// なし
+void ShopArmor::TransitionNoneState()
+{
+    state = State::None;
+}
+void ShopArmor::UpdateNoneState(float elapsedTime)
+{
+}
+
 // 話す
-void ShopArmor::Shop_Talk()
+void ShopArmor::TransitionTalkState()
+{
+    state = State::Talk;
+}
+void ShopArmor::UpdateTalkState(float elapsedTime)
 {
 }
 
 // 買う
-void ShopArmor::Shop_Buy()
+void ShopArmor::TransitionBuyState()
+{
+    state = State::Buy;
+}
+void ShopArmor::UpdateBuyState(float elapsedTime)
 {
 }
 
 // 売る
-void ShopArmor::Shop_Sell()
+void ShopArmor::TransitionSellState()
+{
+    state = State::Sell;
+}
+void ShopArmor::UpdateSellState(float elapsedTime)
+{
+}
+
+// 終わり
+void ShopArmor::TransitionEndState()
+{
+    state = State::End;
+}
+void ShopArmor::UpdateEndState(float elapsedTime)
 {
 }

@@ -8,11 +8,7 @@
 // 初期化
 void SceneShop::Initialize()
 {
-    // ショップ
-    weapon = std::make_unique<ShopWeapon>();
-    armor = std::make_unique<ShopArmor>();
-    recovery = std::make_unique<ShopRecovery>();
-    tool = std::make_unique<ShopTool>();
+    TransitionNoneState();
 }
 
 // 終了化
@@ -25,11 +21,25 @@ void SceneShop::Update(float elapsedTime)
 {
     ProcessInput();
 
-    if (GetState() == GameState::Play)
+    if (GetGameState() == GameState::Play)
     {
-        if (SceneChangeflg)
+        switch (state)
         {
-            Change(elapsedTime);
+        case SceneShop::State::None: // なし
+            UpdateNoneState(elapsedTime);
+            break;
+        case SceneShop::State::Weapon: // 武器
+            UpdateWeaponState(elapsedTime);
+            break;
+        case SceneShop::State::Armor: // 防具
+            UpdateArmorState(elapsedTime);
+            break;
+        case SceneShop::State::Recovery: // 回復
+            UpdateRecoveryState(elapsedTime);
+            break;
+        case SceneShop::State::Tool: // 道具
+            UpdateToolState(elapsedTime);
+            break;
         }
     }
 }
@@ -38,7 +48,7 @@ void SceneShop::ProcessInput()
 {
     GamePad& gamePad = Input::Instance().GetGamePad();
 
-    if (GetState() == Play)
+    if (GetGameState() == Play)
     {
         if (gamePad.GetButtonDown() & GamePad::BTN_A ||
             GetKeyState(VK_RETURN) & 0x8000)
@@ -48,16 +58,16 @@ void SceneShop::ProcessInput()
         if (GetKeyState(VK_TAB) & 0x8000)
         {
             // ポーズに移行
-            SetState(Paused);
+            paused = std::make_unique<UIPaused>(this);
         }
     }
 
-    if (GetState() == Paused)
+    if (GetGameState() == Paused)
     {
         if (GetKeyState(VK_BACK) & 0x8000)
         {
             // プレイに移行
-            SetState(Play);
+            paused->Update();
         }
     }
 }
@@ -76,8 +86,9 @@ void SceneShop::Render()
     dc->ClearDepthStencilView(dsv, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
     dc->OMSetRenderTargets(1, &rtv, dsv);
 
-    if (GetState() == Play)
+    if (GetGameState() == Paused)
     {
+        paused->Render();
         RenderImGui();
     }
 }
@@ -85,10 +96,45 @@ void SceneShop::Render()
 void SceneShop::RenderImGui()
 {
 #if _DEBUG
-    weapon->Render();
-    armor->Render();
-    recovery->Render();
-    tool->Render();
+
+    switch (state)
+    {
+    case SceneShop::State::Weapon:
+        weapon->Render();
+        break;
+    case SceneShop::State::Armor:
+        armor->Render();
+        break;
+    case SceneShop::State::Recovery:
+        recovery->Render();
+        break;
+    case SceneShop::State::Tool:
+        tool->Render();
+        break;
+    }
+
+    ImGui::Begin("State");
+    if (ImGui::Button("None"))
+    {
+        TransitionNoneState();
+    }
+    if (ImGui::Button("Weapon"))
+    {
+        TransitionWeaponState();
+    }
+    if (ImGui::Button("Armor"))
+    {
+        TransitionArmorState();
+    }
+    if (ImGui::Button("Recovery"))
+    {
+        TransitionRecoveryState();
+    }
+    if (ImGui::Button("Tool"))
+    {
+        TransitionToolState();
+    }
+    ImGui::End();
 #endif
 }
 
@@ -96,4 +142,89 @@ void SceneShop::RenderImGui()
 void SceneShop::Change(float elapsedTime)
 {
     SceneManager::Instance().ChangeScene(new SceneLoading(new SceneGame));
+}
+
+// なし
+void SceneShop::TransitionNoneState()
+{
+    state = State::None;
+}
+void SceneShop::UpdateNoneState(float elapsedTime)
+{
+    if (SceneChangeflg)
+    {
+        Change(elapsedTime);
+    }
+}
+
+// 武器
+void SceneShop::TransitionWeaponState()
+{
+    state = State::Weapon;
+    weapon = std::make_unique<ShopWeapon>();
+}
+void SceneShop::UpdateWeaponState(float elapsedTime)
+{
+    if (weapon->GetEndState())
+    {
+        weapon->Update();
+    }
+    else
+    {
+        TransitionNoneState();
+    }
+}
+
+// 防具
+void SceneShop::TransitionArmorState()
+{
+    state = State::Armor;
+    armor = std::make_unique<ShopArmor>();
+}
+void SceneShop::UpdateArmorState(float elapsedTime)
+{
+    if (armor->GetEndState())
+    {
+        armor->Update();
+    }
+    else
+    {
+        TransitionNoneState();
+    }
+}
+
+// 回復
+void SceneShop::TransitionRecoveryState()
+{
+    state = State::Recovery;
+    recovery = std::make_unique<ShopRecovery>();
+}
+void SceneShop::UpdateRecoveryState(float elapsedTime)
+{
+    if (recovery->GetEndState())
+    {
+        recovery->Update();
+    }
+    else
+    {
+        TransitionNoneState();
+    }
+}
+
+// 道具
+void SceneShop::TransitionToolState()
+{
+    state = State::Tool;
+    tool = std::make_unique<ShopTool>();
+}
+void SceneShop::UpdateToolState(float elapsedTime)
+{
+    if (tool->GetEndState())
+    {
+        tool->Update();
+    }
+    else
+    {
+        TransitionNoneState();
+    }
 }

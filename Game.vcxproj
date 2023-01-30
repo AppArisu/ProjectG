@@ -185,6 +185,10 @@
     <ClInclude Include="Sauce\Game\Shop_Recovery.h" />
     <ClInclude Include="Sauce\Game\Shop_Tool.h" />
     <ClInclude Include="Sauce\Game\Shop_Weapon.h" />
+    <ClInclude Include="Sauce\Game\UI_Battle.h" />
+    <ClInclude Include="Sauce\Game\UI_Quit.h" />
+    <ClInclude Include="Sauce\Game\UI_Screen.h" />
+    <ClInclude Include="Sauce\Game\UI_Paused.h" />
     <ClInclude Include="Sauce\Graphics\Font.h" />
     <ClInclude Include="Sauce\Graphics\Graphic.h" />
     <ClInclude Include="Sauce\Graphics\ImGuiRender.h" />
@@ -228,6 +232,10 @@
     <ClCompile Include="Sauce\Game\Shop_Recovery.cpp" />
     <ClCompile Include="Sauce\Game\Shop_Tool.cpp" />
     <ClCompile Include="Sauce\Game\Shop_Weapon.cpp" />
+    <ClCompile Include="Sauce\Game\UI_Battle.cpp" />
+    <ClCompile Include="Sauce\Game\UI_Paused.cpp" />
+    <ClCompile Include="Sauce\Game\UI_Quit.cpp" />
+    <ClCompile Include="Sauce\Game\UI_Screen.cpp" />
     <ClCompile Include="Sauce\Graphics\Font.cpp" />
     <ClCompile Include="Sauce\Graphics\Graphic.cpp" />
     <ClCompile Include="Sauce\Graphics\ImGuiRender.cpp" />

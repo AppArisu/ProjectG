@@ -5,6 +5,8 @@
 // コンストラクタ
 ShopTool::ShopTool()
 {
+    TransitionNoneState();
+
     items = std::make_unique<Item>("Data/Text/Tool.txt");
 }
 
@@ -13,15 +15,20 @@ void ShopTool::Update()
 {
     switch (state)
     {
-    case ShopTool::None:
+    case Shop::None: // なし
+        UpdateNoneState(1);
         break;
-    case ShopTool::Talk:
+    case Shop::Talk: // 話す
+        UpdateNoneState(1);
         break;
-    case ShopTool::Buy:
+    case Shop::Buy: // 買う
+        UpdateNoneState(1);
         break;
-    case ShopTool::Sell:
+    case Shop::Sell: // 売る
+        UpdateNoneState(1);
         break;
-    case ShopTool::End:
+    case Shop::End: // 終わり
+        UpdateNoneState(1);
         break;
     }
 }
@@ -48,17 +55,47 @@ void ShopTool::RenderImGui()
     ImGui::End();
 }
 
+// なし
+void ShopTool::TransitionNoneState()
+{
+    state = State::None;
+}
+void ShopTool::UpdateNoneState(float elapsedTime)
+{
+}
+
 // 話す
-void ShopTool::Shop_Talk()
+void ShopTool::TransitionTalkState()
+{
+    state = State::Talk;
+}
+void ShopTool::UpdateTalkState(float elapsedTime)
 {
 }
 
 // 買う
-void ShopTool::Shop_Buy()
+void ShopTool::TransitionBuyState()
+{
+    state = State::Buy;
+}
+void ShopTool::UpdateBuyState(float elapsedTime)
 {
 }
 
 // 売る
-void ShopTool::Shop_Sell()
+void ShopTool::TransitionSellState()
+{
+    state = State::Sell;
+}
+void ShopTool::UpdateSellState(float elapsedTime)
+{
+}
+
+// 終わり
+void ShopTool::TransitionEndState()
+{
+    state = State::End;
+}
+void ShopTool::UpdateEndState(float elapsedTime)
 {
 }

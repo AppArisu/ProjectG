@@ -4,6 +4,7 @@
 #include "../Graphics/Sprite.h"
 
 #include "Player.h"
+#include "UI_Paused.h"
 
 enum State
 {
@@ -61,4 +62,7 @@ private:
 
     // ƒvƒŒƒCƒ„[
     std::unique_ptr<Player> player = nullptr;
+
+    // UI
+    std::unique_ptr<UIPaused> paused = nullptr;
 };
