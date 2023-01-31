@@ -89,5 +89,4 @@ private:
 
 private:
     State state = State::Idle;
-
 };

@@ -9,6 +9,8 @@
 // 初期化
 void SceneBattle::Initialize()
 {
+    TransitionIdleState();
+
     // プレイヤー
     player = std::make_unique<Player>();
 
@@ -31,10 +33,26 @@ void SceneBattle::Update(float elapsedTime)
 
     if (GetGameState() == GameState::Play)
     {
-
-        if (SceneChangeflg)
+        switch (state)
         {
-            Change(elapsedTime);
+        case SceneBattle::Idle:
+            UpdateIdleState(elapsedTime);
+            break;
+        case SceneBattle::Attack:
+            UpdateAttackState(elapsedTime);
+            break;
+        case SceneBattle::Defense:
+            UpdateDefenseState(elapsedTime);
+            break;
+        case SceneBattle::Tools:
+            UpdateToolsState(elapsedTime);
+            break;
+        case SceneBattle::Run:
+            UpdateRunState(elapsedTime);
+            break;
+        case SceneBattle::End:
+            UpdateEndState(elapsedTime);
+            break;
         }
     }
 }
@@ -114,6 +132,97 @@ void SceneBattle::CallEnemy(Enemy* enemy)
         zombie = new EnemyZombie;
     }
     enemyManager.Register(enemy);
+}
+
+// 待機
+void SceneBattle::TransitionIdleState()
+{
+    state = BState::Idle;
+}
+void SceneBattle::UpdateIdleState(float elapsedTime)
+{
+    if (SceneChangeflg)
+    {
+        Change(elapsedTime);
+    }
+
+    if (GetAsyncKeyState('1') & 0x8000)
+    {
+        TransitionAttackState();
+    }
+    if (GetAsyncKeyState('2') & 0x8000)
+    {
+        TransitionDefenseState();
+    }
+    if (GetAsyncKeyState('3') & 0x8000)
+    {
+        TransitionToolsState();
+    }
+    if (GetAsyncKeyState('4') & 0x8000)
+    {
+        TransitionRunState();
+    }
+
+    if (player->GetHP() <= 0 || slime->GetHP() <= 0)
+    {
+        TransitionEndState();
+    }
+}
+
+// 攻撃
+void SceneBattle::TransitionAttackState()
+{
+    state = BState::Attack;
+}
+void SceneBattle::UpdateAttackState(float elapsedTime)
+{
+    slime->SetHP(slime->GetHP() - player->GetAttack());
+    player->SetHP(player->GetHP() - slime->GetAttack());
+
+    TransitionIdleState();
+}
+
+// 防御
+void SceneBattle::TransitionDefenseState()
+{
+    state = BState::Defense;
+}
+void SceneBattle::UpdateDefenseState(float elapsedTime)
+{
+    slime->SetHP(slime->GetHP() - player->GetAttack());
+    player->SetHP(player->GetHP() - (slime->GetAttack() - player->GetDefense()));
+
+    TransitionIdleState();
+}
+
+// 道具
+void SceneBattle::TransitionToolsState()
+{
+    state = BState::Tools;
+}
+void SceneBattle::UpdateToolsState(float elapsedTime)
+{
+    TransitionIdleState();
+}
+
+// 逃げる
+void SceneBattle::TransitionRunState()
+{
+    state = BState::Run;
+}
+void SceneBattle::UpdateRunState(float elapsedTime)
+{
+    TransitionIdleState();
+}
+
+// 終了
+void SceneBattle::TransitionEndState()
+{
+    state = BState::End;
+}
+void SceneBattle::UpdateEndState(float elapsedTime)
+{
+    Change(elapsedTime);
 }
 
 // シーン遷移処理

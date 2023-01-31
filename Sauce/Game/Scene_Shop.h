@@ -73,5 +73,4 @@ private:
     std::unique_ptr<UIPaused> paused = nullptr;
 
     State state = State::None;
-
 };

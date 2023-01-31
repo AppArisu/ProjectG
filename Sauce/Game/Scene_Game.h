@@ -6,14 +6,6 @@
 #include "Player.h"
 #include "UI_Paused.h"
 
-enum State
-{
-    Town,
-    Shop,
-    Battle,
-    End
-};
-
 // タイトルシーン
 class SceneGame :public Scene
 {
@@ -41,21 +33,36 @@ public:
     void FontRender();
 
     // シーン遷移
-    void Change(float elapsedTime, Scene* nextScene);
-
-    // 
-    void StateSelect(State state01, State state02);
-
-    // 準備完了しているか
-    bool IsSelect() const { return select; }
-
-    // 準備完了設定
-    void SetSelect(bool setSelect) { select = setSelect; }
+    void Change(Scene* nextScene);
 
 private:
-    int state = State::Town;
+    // タウン
+    void TransitionTwonState();
+    void UpdateTwonState(float elapsedTime);
 
-    bool select = false;
+    // ショップ
+    void TransitionShopState();
+    void UpdateShopState(float elapsedTime);
+
+    // バトル
+    void TransitionBattleState();
+    void UpdateBattleState(float elapsedTime);
+
+    // 終了
+    void TransitionEndState();
+    void UpdateEndState(float elapsedTime);
+
+    enum GState
+    {
+        Town,
+        Shop,
+        Battle,
+        End
+    };
+
+private:
+    GState state = GState::Town;
+
     bool SceneChangeflg = false;
 
     std::unique_ptr<Sprite> sprite;

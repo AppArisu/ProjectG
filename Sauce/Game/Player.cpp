@@ -74,6 +74,10 @@ void Player::RenderImGui()
         ImGui::InputInt("Speed", &pram[4]);
         ImGui::TreePop();
     }
+    if (ImGui::TreeNode("Items"))
+    {
+        ImGui::TreePop();
+    }
     ImGui::End();
 }
 
@@ -114,6 +118,7 @@ void Player::TransitionAttackState()
 }
 void Player::UpdateAttackState(float elapsedTime)
 {
+
 }
 
 // ñhå‰

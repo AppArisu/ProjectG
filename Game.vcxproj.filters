@@ -183,9 +183,6 @@
     <ClInclude Include="Sauce\Game\Enemy_Zombie.h">
       <Filter>Sauce\Game\Characters\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Sauce\Game\Battle.h">
-      <Filter>Sauce\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Sauce\Game\Shop.h">
       <Filter>Sauce\Game\Shop</Filter>
     </ClInclude>
@@ -325,9 +322,6 @@
     </ClCompile>
     <ClCompile Include="Sauce\Game\Enemy_Zombie.cpp">
       <Filter>Sauce\Game\Characters\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Sauce\Game\Battle.cpp">
-      <Filter>Sauce\Game</Filter>
     </ClCompile>
     <ClCompile Include="Sauce\Game\Shop_Armor.cpp">
       <Filter>Sauce\Game\Shop</Filter>

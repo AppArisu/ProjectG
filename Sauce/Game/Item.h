@@ -25,8 +25,7 @@ public:
     }
 
 private:
-    //std::vector<Parameter*> itemss;
-    struct Parameter items[maxs];
+    Parameter items[maxs];
 
     char dummy[100] = {};
 };

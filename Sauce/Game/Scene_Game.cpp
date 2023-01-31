@@ -29,26 +29,20 @@ void SceneGame::Update(float elapsedTime)
 
     if (GetGameState() == GameState::Play)
     {
-
         switch (state)
         {
-        case State::Town:
+        case SceneGame::Town:
+            UpdateTwonState(elapsedTime);
             break;
-        case State::Shop:
-            Change(elapsedTime, new SceneShop);
+        case SceneGame::Shop:
+            UpdateShopState(elapsedTime);
             break;
-        case State::Battle:
-            Change(elapsedTime, new SceneBattle);
+        case SceneGame::Battle:
+            UpdateBattleState(elapsedTime);
             break;
-        case State::End:
+        case SceneGame::End:
+            UpdateEndState(elapsedTime);
             break;
-        }
-
-        StateSelect(Town, End);
-
-        if (SceneChangeflg)
-        {
-            state = State::Shop;
         }
     }
 }
@@ -129,37 +123,50 @@ void SceneGame::FontRender()
 {
 }
 
-void SceneGame::StateSelect(State state01, State state02)
+// タウン
+void SceneGame::TransitionTwonState()
 {
-    GamePad& gamePad = Input::Instance().GetGamePad();
-
-    if (state < state01)
+    state = Town;
+}
+void SceneGame::UpdateTwonState(float elapsedTime)
+{
+    if (SceneChangeflg)
     {
-        state = state02;
-    }
-    if (state > state02)
-    {
-        state = state01;
-    }
-
-    if (!IsSelect())
-    {
-        if (gamePad.GetButtonDown() & GamePad::BTN_UP)
-        {
-            ++state;
-            SetSelect(true);
-        }
-        if (gamePad.GetButtonDown() & GamePad::BTN_DOWN)
-        {
-            --state;
-            SetSelect(true);
-        }
-        SetSelect(false);
+        TransitionShopState();
     }
 }
 
+// ショップ
+void SceneGame::TransitionShopState()
+{
+    state = Shop;
+}
+void SceneGame::UpdateShopState(float elapsedTime)
+{
+    Change(new SceneShop);
+}
+
+// バトル
+void SceneGame::TransitionBattleState()
+{
+    state = Battle;
+}
+void SceneGame::UpdateBattleState(float elapsedTime)
+{
+    Change(new SceneBattle);
+}
+
+// 終了
+void SceneGame::TransitionEndState()
+{
+    state = End;
+}
+void SceneGame::UpdateEndState(float elapsedTime)
+{
+}
+
 // シーン遷移処理
-void SceneGame::Change(float elapsedTime, Scene* nextScene)
+void SceneGame::Change(Scene* nextScene)
 {
     GamePad& gamePad = Input::Instance().GetGamePad();
 

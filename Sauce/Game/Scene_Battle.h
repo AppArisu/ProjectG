@@ -37,6 +37,41 @@ public:
     void CallEnemy(Enemy* enemy);
 
 private:
+    // 待機
+    void TransitionIdleState();
+    void UpdateIdleState(float elapsedTime);
+
+    // 攻撃
+    void TransitionAttackState();
+    void UpdateAttackState(float elapsedTime);
+
+    // 防御
+    void TransitionDefenseState();
+    void UpdateDefenseState(float elapsedTime);
+
+    // 道具
+    void TransitionToolsState();
+    void UpdateToolsState(float elapsedTime);
+
+    // 逃げる
+    void TransitionRunState();
+    void UpdateRunState(float elapsedTime);
+
+    // 終了
+    void TransitionEndState();
+    void UpdateEndState(float elapsedTime);
+
+    enum BState
+    {
+        Idle,
+        Attack,
+        Defense,
+        Tools,
+        Run,
+        End
+    };
+
+private:
     // プレイヤー
     std::unique_ptr<Player> player = nullptr;
     // エネミー
@@ -47,4 +82,6 @@ private:
     std::unique_ptr<UIPaused> paused = nullptr;
 
     bool SceneChangeflg = false;
+
+    BState state = BState::Idle;
 };
